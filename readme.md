@@ -9,6 +9,7 @@ copy a formatting of a picture form InDesign (`.jsx`) to Word (`.vbs`)
 Generate multiple Templates based on the open document. Past in the prompt you data to replace in each new Template;
 
 Pasted data (tab separated):
+
 | First       | Second     |
 | ----------- | ---------- |
 | Content A1  | Content B1 |
