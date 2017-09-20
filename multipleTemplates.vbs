@@ -73,7 +73,6 @@ Public Sub SaveReplaced()
     Dim strLines() As String
     Dim strHeader() As String
     Dim strValue() As String
-    Dim FullName As String
     Dim i, n As Long
     Dim line As String
     Dim field As String
@@ -94,10 +93,8 @@ Public Sub SaveReplaced()
         
         strValue = Split(line, vbTab)
 
-        FullName = strValue(0) & "_" & strValue(1)
-
-        ' set new save path
-        sSaveAsPath = ActiveDocument.Path & "/Veso_" & FullName & ".dotm"
+        ' set new save path - filename is first field
+        sSaveAsPath = ActiveDocument.Path & "/" & strValue(0) & ".dotm"
 
         
         'Save changes to original document
@@ -143,7 +140,3 @@ Function RepText(sIn As String, sFind As String, sRep As String) As String
     Wend
     RepText = sIn
 End Function
-
-
-
-

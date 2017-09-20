@@ -15,7 +15,7 @@ Pasted data (tab separated):
 | Content A1  | Content B1 |
 | Content A2  | Content B2 |
 
-Replaces in the Doc `{{First}} {{Second}}` with `Content A1 Content B1`.
+Replaces in the Doc `{{First}} {{Second}}` with `Content A1 Content B1`. The resulting filename of the new template will be `{{First}}.dotm`.
 
 
 ### Customize the Word User Interface (Ribbon)
