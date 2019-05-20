@@ -31,3 +31,6 @@ See also:
 
 ### Status
 This is only a set of test-scripts. use at your own risk. :)
+
+## Images in Word
+If you have a Image in Illustrator you can import it with `.emf` (Bezier/Spline-Suppoert) or `.wmf (only Polyline) to Word. 
