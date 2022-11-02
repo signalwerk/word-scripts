@@ -16,7 +16,7 @@ Clipboard data (tab separated):
 | Content A2  | Content B2 | hello        |
 
 Replaces in the Doc `{{First}} {{Second}}` with `Content A1 Content B1`.  
-Removes picture (`Shape` not `InlineShapes`) that have the Alt-Text `hello` (Line 1 & 2) and `world` (Line 1).  
+Removes picture (`Shape` not `InlineShape`) that have the Alt-Text `hello` (Line 1 & 2) and `world` (Line 1).  
 The resulting filename of the new template will be `{{First}}.dotm`.
 
 
