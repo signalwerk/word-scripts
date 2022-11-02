@@ -6,16 +6,18 @@ Script to copy image-formatting from InDesign to Word
 copy a formatting of a picture form InDesign (`.jsx`) to Word (`.vbs`)
 
 ### `multipleTemplates`
-Generate multiple Templates based on the open document. Past in the prompt you data to replace in each new Template;
+Generate multiple Templates based on the open document. Copy text to replace in each new Template;
 
-Pasted data (tab separated):
+Clipboard data (tab separated):
 
-| First       | Second     |
-| ----------- | ---------- |
-| Content A1  | Content B1 |
-| Content A2  | Content B2 |
+| First       | Second     | DEL_PIC      |
+| ----------- | ---------- | ------------ |
+| Content A1  | Content B1 | hello\|world |
+| Content A2  | Content B2 | hello        |
 
-Replaces in the Doc `{{First}} {{Second}}` with `Content A1 Content B1`. The resulting filename of the new template will be `{{First}}.dotm`.
+Replaces in the Doc `{{First}} {{Second}}` with `Content A1 Content B1`.  
+Removes picture (`Shape` not `InlineShapes`) that have the Alt-Text `hello` (Line 1 & 2) and `world` (Line 1).  
+The resulting filename of the new template will be `{{First}}.dotm`.
 
 
 ### Customize the Word User Interface (Ribbon)
@@ -27,7 +29,7 @@ Example:
 
 ### References
 See also:
-* https://github.com/flekst/Trista-DPI
+* [Trista DPI – Batch processing of raster images in Adobe InDesign documents](https://github.com/flekst/Trista-DPI)
 
 ### Status
 This is only a set of test-scripts. use at your own risk. :)
