@@ -5,7 +5,6 @@ Public Sub FindReplaceAnywhere(pFindTxt As String, pReplaceTxt As String)
 
     'Fix the skipped blank Header/Footer problem
     lngJunk = ActiveDocument.Sections(1).Headers(1).Range.StoryType
-
     'Fix I don't know --- sh
     For Each oShp In ActiveDocument.Sections(1).Headers(wdHeaderFooterPrimary).Shapes
         If oShp.Type = msoTextBox Then
@@ -115,10 +114,6 @@ Public Sub SaveReplaced()
         'Save changes to original document
         ActiveDocument.Save
 
-        ' add new document
-        ' Dim oNewDoc As Document
-        ' Set oNewDoc = Documents.Add(ActiveDocument.FullName)
-
         'copies the active document
         Application.Documents.Add ActiveDocument.FullName
 
@@ -137,10 +132,8 @@ Public Sub SaveReplaced()
                 altTexts = Split(strValue(n), "|")
                 For iAltText = 0 To UBound(altTexts)
                     altText = altTexts(iAltText)
-                    Dim myPic As shape
-                    Set myPic = getPictureByAltText(altText)
-                    On Error Resume Next
-                    myPic.Delete
+                    Debug.Print "Delete by ID: " & "'" & altText & "'"
+                    deleteAllPicturesByAltText (altText)
                 Next iAltText
             Else
                 FindReplaceAnywhere "{{" & strHeader(n) & "}}", strValue(n)
@@ -171,15 +164,13 @@ Function RepText(sIn As String, sFind As String, sRep As String) As String
 End Function
 
 ' Sub DeletePicByAltText()
-'
 '     Dim myPic As shape
-'     Set myPic = getPictureByAltText("YourAltText")
+'     Set myPic = getPictureByAltText("novopress")
 '     If myPic Is Nothing Then
 '         MsgBox "Your Picture was Not found. Check the 'Alt Text' is correct and try again."
 '     End If
 '     On Error Resume Next
 '     myPic.Delete
-'
 ' End Sub
 
 Function getPictureByAltText(altText As String) As shape
@@ -193,7 +184,6 @@ Function getPictureByAltText(altText As String) As shape
 
     ' loop content
     For Each shape In ActiveDocument.Shapes
-        Debug.Print "alt: " & shape.AlternativeText
         If shape.AlternativeText = altText Then
             Set getPictureByAltText = shape
             Exit Function
@@ -209,3 +199,15 @@ Function getPictureByAltText(altText As String) As shape
     Next
 
 End Function
+
+Sub deleteAllPicturesByAltText(altText As String)
+    
+    On Error GoTo skip
+    Do
+        Dim myPic   As shape
+        Set myPic = getPictureByAltText(altText)
+        myPic.Delete
+    Loop
+skip:
+    
+End Sub
